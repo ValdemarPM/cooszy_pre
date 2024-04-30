@@ -1,16 +1,34 @@
-# cooszy_pre
+# 🌟 Cooszy
 
-A new Flutter project.
+## What problem are we solving?
 
-## Getting Started
+🤗 It's difficult to keep and grow your relationships → Let’s stay connected.
+🤩 It's difficult to value the you have around you  → Let’s save important details and moments.
 
-This project is a starting point for a Flutter application.
+## Value
 
-A few resources to get you started if this is your first Flutter project:
+Keep and show your love to your friends.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🔆 Are these premises kept?
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ - How important are your friends to you?
+ - Stay connected to your friends.
+ - Show some love.
+ - Remember important details about them.
+ - Make them remind you.
+
+### Why do you need this App?
+
+Because it’s difficult to keep track on friends.
+Remember what was told.
+Understand the relationship.
+Express what you feel.
+And be present.
+It also helps find means to increase your group of friends.
+
+And it’s fun, healthier and positive for you and them.
+
+*It’s not to find mates.* 
+It’s to keep and enrich the ones you have and are encountering in your life.
+
+> Writing about your relationships is not only therapeutic, but it helps you understand better then as well as yourself.
