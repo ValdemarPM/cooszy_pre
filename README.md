@@ -3,6 +3,7 @@
 ## What problem are we solving?
 
 🤗 It's difficult to keep and grow your relationships → Let’s stay connected.
+
 🤩 It's difficult to value the you have around you  → Let’s save important details and moments.
 
 ## Value

@@ -14,9 +14,23 @@ class _MyPeopleState extends State<MyPeople> {
   Widget build(BuildContext context) {
     return BaseWidget(
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: const Text("My people"),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          actions: [
+            PopupMenuButton(
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: 1,
+                  child: Text("Add a contact"),
+                ),
+                const PopupMenuItem(
+                  value: 2,
+                  child: Text("Resync all contacts"),
+                ),
+              ],
+            ),
+          ],
         ),
         body: ListView(children: [
           GestureDetector(
