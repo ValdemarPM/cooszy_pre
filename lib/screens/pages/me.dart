@@ -1,6 +1,4 @@
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
-import 'package:cooszy_pre/screens/components/box.dart';
-import 'package:cooszy_pre/screens/components/square_button.dart';
 import 'package:cooszy_pre/themes/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +8,7 @@ class Me extends StatefulWidget {
   const Me({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MeState createState() => _MeState();
 }
 
@@ -64,19 +63,10 @@ class _MeState extends State<Me> {
             ),
           ],
         ),
-        body: Column(
+        body: const Column(
           children: [
             Center(
-              child: Box(
-                color: Theme.of(context).colorScheme.primary,
-                child: SquareButton(
-                  color: Theme.of(context).colorScheme.secondary,
-                  onTap: () {
-                    Provider.of<ThemeProvider>(context, listen: false)
-                        .toggleTheme();
-                  },
-                ),
-              ),
+              child: Text("Me section"),
             ),
           ],
         ),
