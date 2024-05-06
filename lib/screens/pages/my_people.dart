@@ -66,7 +66,7 @@ class _MyPeopleState extends State<MyPeople> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Angeles Rodrigo Remacha",
+                                    "Angeles Remacha Rodrigo",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 22),
