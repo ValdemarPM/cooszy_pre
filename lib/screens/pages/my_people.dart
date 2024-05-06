@@ -6,6 +6,7 @@ class MyPeople extends StatefulWidget {
   const MyPeople({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyPeopleState createState() => _MyPeopleState();
 }
 
@@ -14,9 +15,23 @@ class _MyPeopleState extends State<MyPeople> {
   Widget build(BuildContext context) {
     return BaseWidget(
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: const Text("My people"),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          actions: [
+            PopupMenuButton(
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: 1,
+                  child: Text("Add a contact"),
+                ),
+                const PopupMenuItem(
+                  value: 2,
+                  child: Text("Resync all contacts"),
+                ),
+              ],
+            ),
+          ],
         ),
         body: ListView(children: [
           GestureDetector(
@@ -51,7 +66,7 @@ class _MyPeopleState extends State<MyPeople> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Angeles Rodrigo Remacha",
+                                    "Angeles Remacha Rodrigo",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         fontSize: 22),
@@ -93,9 +108,11 @@ class _MyPeopleState extends State<MyPeople> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text("+ To-Do",
+                              child: Text("+ To-Do",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           Expanded(
@@ -103,9 +120,11 @@ class _MyPeopleState extends State<MyPeople> {
                               onPressed: () {},
                               style: TextButton.styleFrom(
                                   minimumSize: const Size.fromHeight(40)),
-                              child: const Text("+ Episode",
+                              child: Text("+ Episode",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           const SizedBox(
@@ -193,9 +212,11 @@ class _MyPeopleState extends State<MyPeople> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text("+ To-Do",
+                              child: Text("+ To-Do",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           Expanded(
@@ -203,9 +224,11 @@ class _MyPeopleState extends State<MyPeople> {
                               onPressed: () {},
                               style: TextButton.styleFrom(
                                   minimumSize: const Size.fromHeight(40)),
-                              child: const Text("+ Episode",
+                              child: Text("+ Episode",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           const SizedBox(
@@ -293,9 +316,11 @@ class _MyPeopleState extends State<MyPeople> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text("+ To-Do",
+                              child: Text("+ To-Do",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           Expanded(
@@ -303,9 +328,11 @@ class _MyPeopleState extends State<MyPeople> {
                               onPressed: () {},
                               style: TextButton.styleFrom(
                                   minimumSize: const Size.fromHeight(40)),
-                              child: const Text("+ Episode",
+                              child: Text("+ Episode",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           const SizedBox(
@@ -393,9 +420,11 @@ class _MyPeopleState extends State<MyPeople> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text("+ To-Do",
+                              child: Text("+ To-Do",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           Expanded(
@@ -403,9 +432,11 @@ class _MyPeopleState extends State<MyPeople> {
                               onPressed: () {},
                               style: TextButton.styleFrom(
                                   minimumSize: const Size.fromHeight(40)),
-                              child: const Text("+ Episode",
+                              child: Text("+ Episode",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           const SizedBox(
@@ -493,9 +524,11 @@ class _MyPeopleState extends State<MyPeople> {
                           Expanded(
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text("+ To-Do",
+                              child: Text("+ To-Do",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           Expanded(
@@ -503,9 +536,11 @@ class _MyPeopleState extends State<MyPeople> {
                               onPressed: () {},
                               style: TextButton.styleFrom(
                                   minimumSize: const Size.fromHeight(40)),
-                              child: const Text("+ Episode",
+                              child: Text("+ Episode",
                                   style: TextStyle(
-                                      color: Colors.blue, fontSize: 14.0)),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontSize: 14.0)),
                             ),
                           ),
                           const SizedBox(
