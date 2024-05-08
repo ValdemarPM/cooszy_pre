@@ -1,3 +1,5 @@
+import 'package:cooszy_pre/models/level.dart';
+import 'package:cooszy_pre/models/level_manager.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/subpages/someone.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +15,11 @@ class MyPeople extends StatefulWidget {
 class _MyPeopleState extends State<MyPeople> {
   var names = [
     "Joana Maria",
-    "Angeles Remacha",
+    "Angeles Rémacha",
     "Dani Casado",
     "Francisco Domingues de Santos e Sousa Batista",
     "Marco Paulo",
-    "Paula Solé",
+    "Paula Soléña",
     "Bruno Machado da Silva",
     "Cristina Ferrer"
   ];
@@ -33,12 +35,32 @@ class _MyPeopleState extends State<MyPeople> {
     "cris"
   ];
 
+  var levelType = [2, 1, 3, 2, 3, 2, 3, 3];
+
+  LevelManager levelManager = LevelManager();
+  Level? level;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    level = levelManager.getLevelByNum(2); // Fetch level by number
+  }
+
   @override
   Widget build(BuildContext context) {
+    // Using the null-aware operator `?.` to safely access levelDescription
+    String levelDescription = level?.levelDescription ?? "Unknown level";
+
     return BaseWidget(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("My people"),
+          title: Text(
+            "My people",
+            style: TextStyle(
+                fontFamily: 'Baloo2',
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).colorScheme.inversePrimary),
+          ),
           actions: [
             PopupMenuButton(
               itemBuilder: (context) => [
@@ -55,6 +77,7 @@ class _MyPeopleState extends State<MyPeople> {
           ],
         ),
         body: ListView(children: [
+          // FOR LOOP
           for (int i = 0; i < 8; i++)
             GestureDetector(
               onTap: () {
@@ -67,6 +90,7 @@ class _MyPeopleState extends State<MyPeople> {
                   children: [
                     Row(
                       children: [
+                        // Image
                         Padding(
                           padding: const EdgeInsets.only(left: 4.0, top: 4.0),
                           child: Container(
@@ -83,6 +107,7 @@ class _MyPeopleState extends State<MyPeople> {
                             ),
                           ),
                         ),
+                        // Name & level
                         Expanded(
                           child: Padding(
                             padding:
@@ -90,32 +115,41 @@ class _MyPeopleState extends State<MyPeople> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  // Name
-                                  names[i],
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 3,
-                                  style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .inversePrimary, // Removed const here
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
+                                // Name
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 4.0),
+                                  child: RichText(
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 3,
+                                    text: TextSpan(
+                                      text: names[i],
+                                      style: TextStyle(
+                                        fontFamily: 'Kaushan Script',
+                                        height: 1.2,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .inversePrimary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                const Row(
+                                // Level
+                                Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(
+                                    const Icon(
                                       Icons.add_reaction_outlined,
                                       size: 20,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 6,
                                     ),
                                     Text(
-                                      "Intimate friend",
-                                      style: TextStyle(fontSize: 12),
+                                      levelDescription,
+                                      style: const TextStyle(
+                                          fontFamily: 'Baloo2', fontSize: 12),
                                     ),
                                   ],
                                 ),
