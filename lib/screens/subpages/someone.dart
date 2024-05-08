@@ -20,7 +20,18 @@ class _SomeoneState extends State<Someone> {
         backgroundColor:
             Colors.transparent, // Ensure Scaffold background is transparent
         appBar: AppBar(
-          title: const Text("Angeles Remacha Rodrigo"),
+          iconTheme: IconThemeData(
+              color: Theme.of(context).colorScheme.inversePrimary),
+          title: RichText(
+              text: TextSpan(
+            text: "Angeles Remacha Rodrigo",
+            style: TextStyle(
+                fontFamily: 'Kaushan Script',
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.inversePrimary),
+          )),
+          titleSpacing: 0,
         ),
         body: ListView(
           children: [
