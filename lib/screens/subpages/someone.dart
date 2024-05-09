@@ -73,8 +73,7 @@ class _SomeoneState extends State<Someone> {
                                       ),
                                       const Spacer(),
                                       IconButton(
-                                        onPressed:
-                                            () {}, // Placeholder empty function
+                                        onPressed: () {},
                                         icon: Icon(
                                           Icons.mode_edit,
                                           size: 20.0,

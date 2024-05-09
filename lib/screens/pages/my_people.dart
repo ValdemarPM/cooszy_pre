@@ -3,6 +3,7 @@ import 'package:cooszy_pre/models/level_manager.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/subpages/someone.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class MyPeople extends StatefulWidget {
   const MyPeople({super.key});
@@ -191,6 +192,17 @@ class _MyPeopleState extends State<MyPeople> {
                 ),
               ),
             ),
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                  side: BorderSide(
+                      width: 2, color: Theme.of(context).colorScheme.tertiary)),
+              child: const Text("ADD SOMEONE ELSE"),
+            ),
+          ),
         ]),
       ),
     );
