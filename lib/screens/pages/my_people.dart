@@ -3,7 +3,6 @@ import 'package:cooszy_pre/models/level_manager.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/subpages/someone.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MyPeople extends StatefulWidget {
   const MyPeople({super.key});
@@ -165,7 +164,7 @@ class _MyPeopleState extends State<MyPeople> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.front_hand,
+                                  Icons.waving_hand,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
                         // Episode button
@@ -174,7 +173,7 @@ class _MyPeopleState extends State<MyPeople> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.movie,
+                                  Icons.event_note,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
                         // See details button
