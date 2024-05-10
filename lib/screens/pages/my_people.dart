@@ -164,7 +164,7 @@ class _MyPeopleState extends State<MyPeople> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.front_hand,
+                                  Icons.waving_hand,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
                         // Episode button
@@ -173,7 +173,7 @@ class _MyPeopleState extends State<MyPeople> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.movie,
+                                  Icons.event_note,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
                         // See details button
@@ -191,6 +191,17 @@ class _MyPeopleState extends State<MyPeople> {
                 ),
               ),
             ),
+          Padding(
+            padding: const EdgeInsets.only(
+                top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
+            child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(
+                  side: BorderSide(
+                      width: 2, color: Theme.of(context).colorScheme.tertiary)),
+              child: const Text("ADD SOMEONE ELSE"),
+            ),
+          ),
         ]),
       ),
     );

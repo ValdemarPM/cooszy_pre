@@ -73,8 +73,7 @@ class _SomeoneState extends State<Someone> {
                                       ),
                                       const Spacer(),
                                       IconButton(
-                                        onPressed:
-                                            () {}, // Placeholder empty function
+                                        onPressed: () {},
                                         icon: Icon(
                                           Icons.mode_edit,
                                           size: 20.0,
@@ -110,7 +109,7 @@ class _SomeoneState extends State<Someone> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: 4.0),
-                                child: Icon(Icons.front_hand_outlined,
+                                child: Icon(Icons.waving_hand_outlined,
                                     color: Theme.of(context)
                                         .colorScheme
                                         .inversePrimary),
@@ -317,7 +316,7 @@ class _SomeoneState extends State<Someone> {
                                 // Title
                                 Padding(
                                   padding: const EdgeInsets.only(right: 4.0),
-                                  child: Icon(Icons.movie_outlined,
+                                  child: Icon(Icons.event_note_outlined,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .inversePrimary),
