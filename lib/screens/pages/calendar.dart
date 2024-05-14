@@ -1,6 +1,7 @@
 import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 //import 'package:flutter_svg/svg.dart';
 
 class Calendar extends StatefulWidget {
@@ -12,7 +13,6 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  /*
   final String emojiIntimateIcon = AssetsUtils.emojiIntimate;
   final String emojiCloseIcon = AssetsUtils.emojiClose;
   Widget svgIntimate = Container();
@@ -34,7 +34,6 @@ class _CalendarState extends State<Calendar> {
       height: 40,
     );
   }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +47,6 @@ class _CalendarState extends State<Calendar> {
         ),
         body: Column(
           children: [
-            /*
             Container(
               decoration: BoxDecoration(boxShadow: [
                 BoxShadow(
@@ -62,7 +60,6 @@ class _CalendarState extends State<Calendar> {
             Center(
               child: svgIntimate, // Use the svg here
             ),
-            */
             Center(
                 child: Image.asset(
               AssetsUtils.emojiLevelNasty,

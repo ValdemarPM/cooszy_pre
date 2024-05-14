@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 class AssetsUtils {
   static final AssetsUtils _instance = AssetsUtils._internal();
@@ -32,10 +32,9 @@ class AssetsUtils {
 
   /// Skipping SVGs for now.
   /// I'm not sure if the ones I'm using are too heavy in terms of performance.
-  //static const String emojiIntimate = "assets/icons/intimate_someone.svg";
-  //static const String emojiClose = "assets/icons/close_someone.svg";
+  static const String emojiIntimate = "assets/icons/intimate_someone.svg";
+  static const String emojiClose = "assets/icons/close_someone.svg";
 
-  /*
   static Future<void> svgPrecacheImages(BuildContext context) async {
     // SVGs
     const cacheSvgImages = [
@@ -49,5 +48,4 @@ class AssetsUtils {
           .putIfAbsent(loader.cacheKey(null), () => loader.loadBytes(null));
     }
   }
-  */
 }

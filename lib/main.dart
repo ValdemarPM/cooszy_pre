@@ -41,32 +41,7 @@ class _MyAppState extends State<MyApp> {
 
 Future<void> _precacheAssets(BuildContext context) async {
   // Skipping SVGs for now.
-  //await AssetsUtils.svgPrecacheImages(context);
+  await AssetsUtils.svgPrecacheImages(context);
   // ignore: use_build_context_synchronously
   await AssetsUtils.imagePrecache(context);
 }
-
-/* ---
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Cooszy',
-      theme: Provider.of<ThemeProvider>(context).themeData,
-      //theme: ThemeData(useMaterial3: true,),
-      home: const PersistenBottomNavBarDemo(),
-    );
-  }
-}
-
-Future<void> _precacheAssets(BuildContext context) async {
-  await AssetsUtils.svgPrecacheImages(context);
-  await AssetsUtils.imagePrecache(context);
-}
-
-
-*/
