@@ -39,6 +39,7 @@ dependencies:
   provider:
   persistent_bottom_nav_bar_v2: ^5.0.0
   smooth_page_indicator: ^1.1.0
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +67,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/people/
+    - assets/icons/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
