@@ -1,5 +1,4 @@
-import 'package:cooszy_pre/models/level.dart';
-import 'package:cooszy_pre/models/level_manager.dart';
+import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/subpages/someone.dart';
 import 'package:flutter/material.dart';
@@ -35,22 +34,30 @@ class _MyPeopleState extends State<MyPeople> {
     "cris"
   ];
 
-  var levelType = [2, 1, 3, 2, 3, 2, 3, 3];
+  List<String> levelType = [
+    AssetsUtils.emojiLevelAcquaintance,
+    AssetsUtils.emojiLevelIntimate,
+    AssetsUtils.emojiLevelCasual,
+    AssetsUtils.emojiLevelNasty,
+    AssetsUtils.emojiLevelAcquaintance,
+    AssetsUtils.emojiLevelIntimate,
+    AssetsUtils.emojiLevelClose,
+    AssetsUtils.emojiLevelAcquaintance
+  ];
 
-  LevelManager levelManager = LevelManager();
-  Level? level;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    level = levelManager.getLevelByNum(2); // Fetch level by number
-  }
+  var lastTime = [
+    "12 Feb 2024",
+    "5 Mar 2024",
+    "22 Apr 2024",
+    "18 Dec 2023",
+    "15 Jan 2024",
+    "1 Sep 2023",
+    "22 Apr 2024",
+    "4 Apr 2024"
+  ];
 
   @override
   Widget build(BuildContext context) {
-    // Using the null-aware operator `?.` to safely access levelDescription
-    String levelDescription = level?.levelDescription ?? "Unknown level";
-
     return BaseWidget(
       child: Scaffold(
         appBar: AppBar(
@@ -92,20 +99,54 @@ class _MyPeopleState extends State<MyPeople> {
                       children: [
                         // Image
                         Padding(
-                          padding: const EdgeInsets.only(left: 4.0, top: 4.0),
-                          child: Container(
-                            padding: const EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Theme.of(context).colorScheme.primary),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(50.0),
-                              child: Image.asset(
-                                "assets/images/people/${images[i]}.jpg",
-                                height: 60,
-                              ),
-                            ),
-                          ),
+                          padding: const EdgeInsets.only(left: 3.0, top: 3.0),
+                          child: Stack(
+                              alignment: Alignment.topRight,
+                              children: <Widget>[
+                                Container(
+                                  // Emoji icon position defined by this padding
+                                  padding: const EdgeInsets.only(
+                                      top: 4.0, right: 15.0),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(4),
+                                    // Image oultine
+                                    decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                    child: ClipRRect(
+                                      // Image circle
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: Image.asset(
+                                        "assets/images/people/${images[i]}.jpg",
+                                        height: 60,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                // Level emoji
+                                Container(
+                                  decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onInverseSurface,
+                                            spreadRadius: 1,
+                                            blurRadius: 3,
+                                            offset: const Offset(-3, 3))
+                                      ],
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Image.asset(
+                                    // Emoji PNG:
+                                    levelType[i],
+                                    width: 25,
+                                    height: 25,
+                                  ),
+                                ),
+                              ]),
                         ),
                         // Name & level
                         Expanded(
@@ -139,17 +180,24 @@ class _MyPeopleState extends State<MyPeople> {
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    const Icon(
-                                      Icons.add_reaction_outlined,
+                                    Icon(
+                                      Icons.history,
                                       size: 20,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                     ),
                                     const SizedBox(
                                       width: 6,
                                     ),
                                     Text(
-                                      levelDescription,
-                                      style: const TextStyle(
-                                          fontFamily: 'Baloo2', fontSize: 12),
+                                      lastTime[i],
+                                      style: TextStyle(
+                                          fontFamily: 'Baloo2',
+                                          fontSize: 12,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .secondary),
                                     ),
                                   ],
                                 ),

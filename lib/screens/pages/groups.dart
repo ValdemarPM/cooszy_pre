@@ -7,6 +7,7 @@ class Groups extends StatefulWidget {
   const Groups({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _GroupsState createState() => _GroupsState();
 }
 
