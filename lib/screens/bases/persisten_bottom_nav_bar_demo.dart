@@ -3,11 +3,12 @@ import 'package:cooszy_pre/screens/pages/groups.dart';
 import 'package:cooszy_pre/screens/pages/icebreakers.dart';
 import 'package:cooszy_pre/screens/pages/me.dart';
 import 'package:cooszy_pre/screens/pages/my_people.dart';
+import 'package:cooszy_pre/themes/nav_bar_styling.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 
-class PersistenBottomNavBarDemo extends StatelessWidget {
-  const PersistenBottomNavBarDemo({super.key});
+class PersistenBottomNavBar extends StatelessWidget {
+  const PersistenBottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +51,9 @@ class PersistenBottomNavBarDemo extends StatelessWidget {
           ),
         ),
       ],
-      navBarBuilder: (navBarConfig) => Style9BottomNavBar(
+
+      /// Replancing the original Style9BottomNavBar with this custom one
+      navBarBuilder: (navBarConfig) => NavBarStyling(
         navBarConfig: navBarConfig,
       ),
     ));

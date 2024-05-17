@@ -1,7 +1,8 @@
-import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
+import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class Calendar extends StatefulWidget {
   const Calendar({super.key});
@@ -12,34 +13,30 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  /*
-  final String emojiIntimateIcon = AssetsUtils.emojiIntimate;
-  final String emojiCloseIcon = AssetsUtils.emojiClose;
-  Widget svgIntimate = Container();
-  Widget svgClose = Container();
+  // Initialize the date var
+  String _formattedDateTime = '';
 
   @override
   void initState() {
     super.initState();
-    svgIntimate = SvgPicture.asset(
-      emojiIntimateIcon,
-      semanticsLabel: "Intimate",
-      width: 40,
-      height: 40,
-    );
-    svgClose = SvgPicture.asset(
-      emojiCloseIcon,
-      semanticsLabel: "Close",
-      width: 40,
-      height: 40,
-    );
+    initializeDateFormatting('es_ES', null).then((_) {
+      _formatDateTime();
+      setState(() {}); // Trigger a rebuild after updating _formattedDateTime
+    }).catchError((error) {
+      _formattedDateTime = 'Failed to initialize date formatting: $error';
+      // Handle initialization failure here
+    });
   }
-  */
+
+  void _formatDateTime() {
+    final dateTime = DateTime(2022, 04, 12, 22, 15);
+    final formatter = DateFormat('dd MMM yyyy - HH:mm', 'es_ES');
+    _formattedDateTime = formatter.format(dateTime);
+  }
 
   @override
   Widget build(BuildContext context) {
     return BaseWidget(
-      // Wrap your screen content with BaseWidget
       child: Scaffold(
         backgroundColor:
             Colors.transparent, // Ensure Scaffold background is transparent
@@ -48,41 +45,17 @@ class _CalendarState extends State<Calendar> {
         ),
         body: Column(
           children: [
-            /*
-            Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    color: Theme.of(context).colorScheme.onInverseSurface,
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: const Offset(-1, 4))
-              ], borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: svgClose, // Use the svg here
-            ),
             Center(
-              child: svgIntimate, // Use the svg here
-            ),
-            */
-            Center(
-                child: Image.asset(
-              AssetsUtils.emojiLevelNasty,
-              width: 40,
-              height: 40,
-            )),
-            Container(
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    color: Theme.of(context).colorScheme.onInverseSurface,
-                    spreadRadius: 1,
-                    blurRadius: 3,
-                    offset: const Offset(-1, 4))
-              ], borderRadius: const BorderRadius.all(Radius.circular(20))),
-              child: Image.asset(
-                AssetsUtils.emojiLevelCasual,
-                width: 40,
-                height: 40,
-              ),
+                child: Icon(
+              CooszyIcons.to_do_add,
+              size: 60,
+              color: Theme.of(context).colorScheme.primary,
             )
+                //Text("Calendar"),
+                ),
+            Center(
+              child: Text(_formattedDateTime),
+            ),
           ],
         ),
       ),

@@ -1,6 +1,8 @@
 import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/subpages/someone.dart';
+import 'package:cooszy_pre/screens/subpages/todos.dart';
+import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
 
 class MyPeople extends StatefulWidget {
@@ -64,8 +66,8 @@ class _MyPeopleState extends State<MyPeople> {
           title: Text(
             "My people",
             style: TextStyle(
-                fontFamily: 'Baloo2',
                 fontWeight: FontWeight.w600,
+                fontSize: 22,
                 color: Theme.of(context).colorScheme.inversePrimary),
           ),
           actions: [
@@ -108,8 +110,8 @@ class _MyPeopleState extends State<MyPeople> {
                                   padding: const EdgeInsets.only(
                                       top: 4.0, right: 15.0),
                                   child: Container(
-                                    padding: const EdgeInsets.all(4),
                                     // Image oultine
+                                    padding: const EdgeInsets.all(3),
                                     decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Theme.of(context)
@@ -171,7 +173,7 @@ class _MyPeopleState extends State<MyPeople> {
                                             .colorScheme
                                             .inversePrimary,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 18,
+                                        fontSize: 20,
                                       ),
                                     ),
                                   ),
@@ -210,9 +212,15 @@ class _MyPeopleState extends State<MyPeople> {
                         Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const ToDos()));
+                                },
                                 icon: Icon(
-                                  Icons.waving_hand,
+                                  //Icons.waving_hand_outlined,
+                                  CooszyIcons.to_do,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
                         // Episode button
@@ -221,7 +229,7 @@ class _MyPeopleState extends State<MyPeople> {
                             child: IconButton(
                                 onPressed: () {},
                                 icon: Icon(
-                                  Icons.event_note,
+                                  Icons.event_note_outlined,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
                         // See details button
