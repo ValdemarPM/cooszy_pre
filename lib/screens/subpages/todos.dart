@@ -1,53 +1,123 @@
+import 'package:cooszy_pre/screens/components/checkbox_cooszy.dart';
+import 'package:cooszy_pre/screens/components/cooszy_title.dart';
+import 'package:cooszy_pre/screens/subpages/todos_edit.dart';
+import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
 
-class ToDos extends StatelessWidget {
+class ToDos extends StatefulWidget {
   const ToDos({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _ToDosState createState() => _ToDosState();
+}
+
+class _ToDosState extends State<ToDos> {
+  static const mainTitle = CooszyTitle(
+    textStandard: "To-Dos with ",
+    textStyled: "Joana",
+    wrapNeeded: false,
+  );
+
+  final List<CheckboxCooszy> _checkboxItem1 = [
+    const CheckboxCooszy(
+      text: "We have to go and drink some beers 🍻 and have lots fo fun.",
+      description:
+          "But we also have to do some other stuff like we're so fucking crazy and have lots of fun together!",
+      date: "15 May 2024 - 10:00",
+      alarm: true,
+    ),
+  ];
+
+  final List<CheckboxCooszy> _checkboxItem2 = [
+    const CheckboxCooszy(
+      text: "Go to a museum",
+      description: "Do not forget to tell our friends.",
+      date: "20 May 2024 - 18:00",
+      alarm: false,
+    ),
+  ];
+
+  final toDosEdit = const ToDosEdit();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
-            color: Theme.of(context).colorScheme.onPrimaryContainer),
-        title: RichText(
-            text: TextSpan(
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary),
-                children: const <TextSpan>[
-              TextSpan(
-                  text: "To-Dos with ",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22,
-                  )),
-              TextSpan(
-                  text: "Hermenegildo",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Kaushan Script',
-                  ))
-            ])),
+          color: Theme.of(context).colorScheme.onPrimaryContainer,
+        ),
+        title: mainTitle,
         titleSpacing: 0,
-      ),
-      body: Column(
-        children: <Widget>[
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'Enter a search term',
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 1,
+                child: Text("History"),
               ),
+            ],
+          ),
+        ],
+      ),
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Column(
+                  children: [
+                    ..._checkboxItem1.map((checkboxItem) {
+                      return Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(child: checkboxItem),
+                          ],
+                        ),
+                      );
+                    }),
+                    ..._checkboxItem2.map((checkboxItem) {
+                      return Padding(
+                        padding: const EdgeInsets.only(
+                            top: 0.0, right: 12.0, bottom: 12.0, left: 12.0),
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(child: checkboxItem),
+                          ],
+                        ),
+                      );
+                    }),
+                  ],
+                ),
+                const SizedBox(
+                    height:
+                        80), // Add some space at the bottom for the FloatingActionButton
+              ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Enter your username',
-              ),
+          Positioned(
+            bottom: 72,
+            left: 0,
+            right: 12,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                FloatingActionButton.extended(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return toDosEdit;
+                        });
+                  },
+                  foregroundColor: Theme.of(context).colorScheme.primary,
+                  backgroundColor:
+                      Theme.of(context).colorScheme.onTertiaryContainer,
+                  label: const Text("Add"),
+                  icon: const Icon(CooszyIcons.to_do_add),
+                ),
+              ],
             ),
           ),
         ],
@@ -55,3 +125,103 @@ class ToDos extends StatelessWidget {
     );
   }
 }
+
+
+  /*
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Theme.of(context).colorScheme.onPrimaryContainer),
+        title: mainTitle,
+        titleSpacing: 0,
+        // three dots menu
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: 1,
+                child: Text("History"),
+              ),
+            ],
+          ),
+        ],
+      ),
+      body: Column(
+        children: <Widget>[
+          // Combine both lists and map them to widgets
+          Column(
+            children: [
+              ..._checkboxItem1.map((checkboxItem) {
+                return Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(child: checkboxItem),
+                    ],
+                  ),
+                );
+              }),
+              ..._checkboxItem2.map((checkboxItem) {
+                return Padding(
+                  padding: const EdgeInsets.only(
+                      top: 0.0, right: 12.0, bottom: 12.0, left: 12.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(child: checkboxItem),
+                    ],
+                  ),
+                );
+              }),
+              ..._checkboxItem1.map((checkboxItem) {
+                return Padding(
+                  padding: const EdgeInsets.only(
+                      top: 0.0, right: 12.0, bottom: 12.0, left: 12.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(child: checkboxItem),
+                    ],
+                  ),
+                );
+              }),
+              ..._checkboxItem1.map((checkboxItem) {
+                return Padding(
+                  padding: const EdgeInsets.only(
+                      top: 0.0, right: 12.0, bottom: 12.0, left: 12.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(child: checkboxItem),
+                    ],
+                  ),
+                );
+              }),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton.extended(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return toDosEdit;
+                        });
+                  },
+                  foregroundColor: Theme.of(context).colorScheme.primary,
+                  backgroundColor:
+                      Theme.of(context).colorScheme.onTertiaryContainer,
+                  label: const Text("Add"),
+                  icon: const Icon(CooszyIcons.to_do_add),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+*/

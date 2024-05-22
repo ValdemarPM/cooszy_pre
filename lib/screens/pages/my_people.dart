@@ -1,3 +1,4 @@
+import 'package:cooszy_pre/helpers/date_formatter.dart';
 import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/subpages/someone.dart';
@@ -47,19 +48,93 @@ class _MyPeopleState extends State<MyPeople> {
     AssetsUtils.emojiLevelAcquaintance
   ];
 
-  var lastTime = [
-    "12 Feb 2024",
-    "5 Mar 2024",
-    "22 Apr 2024",
-    "18 Dec 2023",
-    "15 Jan 2024",
-    "1 Sep 2023",
-    "22 Apr 2024",
-    "4 Apr 2024"
+  // Dates
+  List<String> _formattedDateTimes = [];
+  final List<String> lastTime = [
+    "2024, 12, 04",
+    "2024, 08, 22",
+    "2024, 05, 15",
+    "2024, 09, 15",
+    "2024, 10, 22",
+    "2023, 12, 18",
+    "2023, 04, 09",
+    "2024, 04, 04"
   ];
+
+  // Initiate the Date states
+  @override
+  void initState() {
+    super.initState();
+    _loadFormattedDateTimes();
+  }
+
+  // Dates conformation
+  Future<void> _loadFormattedDateTimes() async {
+    List<String> formattedDateTimes = [];
+    // parsing the list of Strings to Dates
+    for (String time in lastTime) {
+      List<int> dateParts = time.split(', ').map(int.parse).toList();
+      DateTime dateTime = DateTime(
+        dateParts[0],
+        dateParts[1],
+        dateParts[2],
+      );
+      // Format the Dates
+      String formattedDateTime =
+          await DateFormatter.formatDate(dateTime, 'es_ES');
+      formattedDateTimes.add(formattedDateTime);
+    }
+    setState(() {
+      _formattedDateTimes = formattedDateTimes;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    // Date icon
+    List<Icon> dateType = [
+      Icon(
+        Icons.notifications_active,
+        size: 16,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      Icon(
+        Icons.notifications_active,
+        size: 16,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      Icon(
+        Icons.alarm_on_outlined,
+        size: 16,
+        color: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      Icon(
+        Icons.alarm_on_outlined,
+        size: 16,
+        color: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      Icon(
+        Icons.history,
+        size: 16,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      Icon(
+        Icons.history,
+        size: 16,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      Icon(
+        Icons.history,
+        size: 16,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      Icon(
+        Icons.history,
+        size: 16,
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+    ];
+
     return BaseWidget(
       child: Scaffold(
         appBar: AppBar(
@@ -82,12 +157,16 @@ class _MyPeopleState extends State<MyPeople> {
                   child: Text("Resync all contacts"),
                 ),
               ],
+              icon: Icon(
+                Icons.more_vert,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
             ),
           ],
         ),
         body: ListView(children: [
           // FOR LOOP
-          for (int i = 0; i < 8; i++)
+          for (int i = 0; i < _formattedDateTimes.length; i++)
             GestureDetector(
               onTap: () {
                 Navigator.push(context,
@@ -108,7 +187,7 @@ class _MyPeopleState extends State<MyPeople> {
                                 Container(
                                   // Emoji icon position defined by this padding
                                   padding: const EdgeInsets.only(
-                                      top: 4.0, right: 15.0),
+                                      top: 4.0, right: 14.0),
                                   child: Container(
                                     // Image oultine
                                     padding: const EdgeInsets.all(3),
@@ -122,7 +201,7 @@ class _MyPeopleState extends State<MyPeople> {
                                       borderRadius: BorderRadius.circular(50.0),
                                       child: Image.asset(
                                         "assets/images/people/${images[i]}.jpg",
-                                        height: 60,
+                                        height: 50,
                                       ),
                                     ),
                                   ),
@@ -144,17 +223,17 @@ class _MyPeopleState extends State<MyPeople> {
                                   child: Image.asset(
                                     // Emoji PNG:
                                     levelType[i],
-                                    width: 25,
-                                    height: 25,
+                                    width: 20,
+                                    height: 20,
                                   ),
                                 ),
                               ]),
                         ),
-                        // Name & level
+                        // Name & Date
                         Expanded(
                           child: Padding(
                             padding:
-                                const EdgeInsets.only(left: 12.0, right: 12.0),
+                                const EdgeInsets.only(left: 18.0, right: 6.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -173,27 +252,28 @@ class _MyPeopleState extends State<MyPeople> {
                                             .colorScheme
                                             .inversePrimary,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                       ),
                                     ),
                                   ),
                                 ),
-                                // Level
                                 Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    Icon(
-                                      Icons.history,
-                                      size: 20,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                    ),
+                                    // Icon - Date history
+
+                                    dateType[i],
+                                    //Icons.schedule_outlined,
+                                    //Icons.notifications_active_outlined,
+                                    //Icons.alarm_on_outlined,
+                                    //Icons.history,
+
                                     const SizedBox(
                                       width: 6,
                                     ),
+                                    // Data text
                                     Text(
-                                      lastTime[i],
+                                      _formattedDateTimes[i],
                                       style: TextStyle(
                                           fontFamily: 'Baloo2',
                                           fontSize: 12,
@@ -219,7 +299,6 @@ class _MyPeopleState extends State<MyPeople> {
                                           builder: (context) => const ToDos()));
                                 },
                                 icon: Icon(
-                                  //Icons.waving_hand_outlined,
                                   CooszyIcons.to_do,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
