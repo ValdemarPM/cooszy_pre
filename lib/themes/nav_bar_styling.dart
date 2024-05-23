@@ -75,7 +75,7 @@ class _NavBarStylingState extends State<NavBarStyling>
                             .primary //item.activeForegroundColor
                         : Theme.of(context)
                             .colorScheme
-                            .onInverseSurface //item.inactiveForegroundColor,
+                            .secondary //item.inactiveForegroundColor,
                     ),
                 child: isSelected ? item.icon : item.inactiveIcon,
               ),

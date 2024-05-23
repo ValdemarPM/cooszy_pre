@@ -65,6 +65,27 @@ class _ToDosState extends State<ToDos> {
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
+                // Card
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 6.0, right: 18.0, bottom: 6.0, left: 18.0),
+                  child: Card(
+                    clipBehavior: Clip.antiAlias,
+                    elevation: 2,
+                    //color: Color.fromARGB(255, 255, 250, 230),
+                    color: Theme.of(context).colorScheme.onTertiaryContainer,
+                    child: const Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(18.0),
+                          child:
+                              Text("Tips for you to take into consideration."),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 Column(
                   children: [
                     ..._checkboxItem1.map((checkboxItem) {
@@ -107,6 +128,7 @@ class _ToDosState extends State<ToDos> {
                   onPressed: () {
                     showModalBottomSheet(
                         context: context,
+                        isScrollControlled: true,
                         builder: (BuildContext context) {
                           return toDosEdit;
                         });

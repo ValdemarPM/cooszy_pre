@@ -1,10 +1,24 @@
 import 'package:cooszy_pre/screens/components/cooszy_title.dart';
 import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:flutter/widgets.dart';
 
-class ToDosEdit extends StatelessWidget {
+class ToDosEdit extends StatefulWidget {
   const ToDosEdit({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _ToDosEditState createState() => _ToDosEditState();
+}
+
+class _ToDosEditState extends State<ToDosEdit> {
+  final TextEditingController _dateController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialization if needed
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,68 +28,202 @@ class ToDosEdit extends StatelessWidget {
       wrapNeeded: true,
     );
 
+    // Date picker controller
+    Future<void> selectDate() async {
+      DateTime? picked = await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(2000),
+          lastDate: DateTime(2100));
+      if (picked != null) {
+        setState(() {
+          _dateController.text = picked.toString().split(" ")[0];
+        });
+      }
+    }
+
     return SizedBox(
-      height: 600,
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  editTitle,
-                  //const Spacer(),
-                  IconButton(
-                    icon: Icon(Icons.close_outlined,
-                        color:
-                            Theme.of(context).colorScheme.onPrimaryContainer),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Flexible(
-                    child: TextFormField(
-                      decoration: const InputDecoration(
-                        icon: Icon(CooszyIcons.to_do),
-                        border: UnderlineInputBorder(),
-                        labelText: 'What are you thinking of doing?',
-                      ),
+      height: 450,
+      child: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    editTitle,
+                    //const Spacer(),
+                    IconButton(
+                      icon: Icon(Icons.check,
+                          color: Theme.of(context).colorScheme.primary),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12.0, left: 38.0),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Flexible(
                       child: TextFormField(
-                        decoration: const InputDecoration(
-                            border: UnderlineInputBorder(),
-                            //labelText: 'Some description...',
-                            hintText: 'Any additional idea here... (optional)'),
+                        decoration: InputDecoration(
+                          // Title textField Icon
+                          icon: Icon(CooszyIcons.to_do,
+                              color: Theme.of(context).colorScheme.secondary),
+                          // TextField underline border
+                          enabledBorder: UnderlineInputBorder(
+                              // TextField initial underline
+                              borderSide: BorderSide(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onInverseSurface,
+                                  width: 1)),
+                          // TextField underline border
+                          border: UnderlineInputBorder(
+                            // TextField generic underline
+                            borderSide: BorderSide(
+                                color: Theme.of(context).colorScheme.secondary,
+                                width: 1),
+                          ),
+                          // TextField underline border
+                          focusedBorder: UnderlineInputBorder(
+                            // TextField onFocus underline
+                            borderSide: BorderSide(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 1),
+                          ),
+                          labelText: 'What are you thinking of doing?',
+                          // TextField initial text
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color:
+                                  Theme.of(context).colorScheme.inversePrimary),
+                          // TextField onFocus text
+                          floatingLabelStyle: TextStyle(
+                              color: Theme.of(context).colorScheme.secondary),
+                          floatingLabelBehavior: FloatingLabelBehavior.auto,
+                        ),
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  // DATE PICKER
-                  SfDateRangePicker(
-                    view: DateRangePickerView.year,
-                  )
-                ],
-              )
-            ],
+                    Icon(
+                      Icons.mic_none_outlined,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Flexible(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 12.0, left: 38.0),
+                        child: TextFormField(
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 2,
+                          decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                  // TextField initial underline
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onInverseSurface,
+                                      width: 1)),
+                              // TextField underline border
+                              border: UnderlineInputBorder(
+                                  // TextField initial underline
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onInverseSurface,
+                                      width: 1)),
+                              // TextField underline border
+                              focusedBorder: UnderlineInputBorder(
+                                // TextField onFocus underline
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    width: 1),
+                              ),
+                              //labelText: 'Some description...',
+                              hintText:
+                                  'Any additional idea here... (optional)',
+                              hintStyle: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onInverseSurface)),
+                        ),
+                      ),
+                    ),
+                    Icon(
+                      Icons.mic_none_outlined,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(36.0),
+                        child: TextField(
+                          controller: _dateController,
+                          decoration: InputDecoration(
+                            hintText: "Pick a date",
+                            filled: true,
+                            fillColor: Theme.of(context)
+                                .colorScheme
+                                .onTertiaryContainer,
+                            prefixIcon: Icon(
+                              Icons.calendar_month_outlined,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onPrimaryContainer,
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                                // TextField initial underline
+                                borderSide: BorderSide(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onInverseSurface,
+                                    width: 1)),
+                            // TextField underline border
+                            border: UnderlineInputBorder(
+                              // TextField generic underline
+                              borderSide: BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                  width: 1),
+                            ),
+                            // TextField underline border
+                            focusedBorder: UnderlineInputBorder(
+                              // TextField onFocus underline
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.primary,
+                                  width: 1),
+                            ),
+                          ),
+                          readOnly: true,
+                          onTap: selectDate,
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _dateController.dispose();
+    super.dispose();
   }
 }

@@ -27,6 +27,43 @@ class __CheckboxCooszyState extends State<CheckboxCooszy> {
       children: [
         Row(
           children: [
+            widget.alarm
+                // If alarm is true
+                ? Padding(
+                    padding: const EdgeInsets.only(
+                        top: 0.0, right: 6.0, bottom: 6.0, left: 16.0),
+                    child: Icon(
+                      Icons.notifications_active,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 18,
+                    ),
+                  )
+                // If alarm is false
+                : Padding(
+                    padding: const EdgeInsets.only(
+                        top: 0.0, right: 6.0, bottom: 6.0, left: 16.0),
+                    child: Icon(
+                      Icons.notifications_off_outlined,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 18,
+                    ),
+                  ),
+
+            // Display date
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 0.0, right: 18.0, bottom: 6.0, left: 6.0),
+              child: Text(
+                widget.date,
+                style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Theme.of(context).colorScheme.secondary),
+              ),
+            ),
+          ],
+        ),
+        Row(
+          children: [
             // Checkbox
             Transform.scale(
               scale: 1.2,
@@ -77,43 +114,6 @@ class __CheckboxCooszyState extends State<CheckboxCooszy> {
               ),
             )
         ]),
-        Row(
-          children: [
-            widget.alarm
-                // If alarm is true
-                ? Padding(
-                    padding: const EdgeInsets.only(
-                        top: 0.0, right: 6.0, bottom: 18.0, left: 18.0),
-                    child: Icon(
-                      Icons.notifications_active,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 18,
-                    ),
-                  )
-                // If alarm is false
-                : Padding(
-                    padding: const EdgeInsets.only(
-                        top: 0.0, right: 6.0, bottom: 18.0, left: 18.0),
-                    child: Icon(
-                      Icons.notifications_off_outlined,
-                      color: Theme.of(context).colorScheme.primary,
-                      size: 18,
-                    ),
-                  ),
-
-            // Display date
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 0.0, right: 18.0, bottom: 18.0, left: 6.0),
-              child: Text(
-                widget.date,
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).colorScheme.secondary),
-              ),
-            ),
-          ],
-        ),
         Divider(
           color: Theme.of(context).colorScheme.tertiary,
           indent: 20,
