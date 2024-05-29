@@ -32,7 +32,7 @@ class _ToDosState extends State<ToDos> {
   final List<CheckboxCooszy> _checkboxItem2 = [
     const CheckboxCooszy(
       text: "Go to a museum",
-      description: "Do not forget to tell our friends.",
+      description: "Do not forget to tell our friends to go out.",
       date: "20 May 2024 - 18:00",
       alarm: false,
     ),
@@ -52,9 +52,25 @@ class _ToDosState extends State<ToDos> {
         actions: [
           PopupMenuButton(
             itemBuilder: (context) => [
-              const PopupMenuItem(
+              PopupMenuItem(
                 value: 1,
-                child: Text("History"),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 3.0),
+                      child: Icon(
+                        Icons.history,
+                        size: 22,
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                      ),
+                    ),
+                    Text(
+                      "History",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.inversePrimary),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -117,8 +133,9 @@ class _ToDosState extends State<ToDos> {
               ],
             ),
           ),
+          // Action button
           Positioned(
-            bottom: 72,
+            bottom: 60,
             left: 0,
             right: 12,
             child: Row(

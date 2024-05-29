@@ -21,6 +21,8 @@ ThemeData lightMode = ThemeData(
     onTertiaryContainer: const Color.fromARGB(255, 255, 246, 242),
 
     // OLD
+    // Turquoise
+    // const Color.fromARGB(150, 48, 213, 200),
     //primary: Colors.grey.shade500,
     //primary: const Color.fromARGB(255, 160, 0, 80),
     //primary: const Color.fromARGB(255, 0, 110, 240),

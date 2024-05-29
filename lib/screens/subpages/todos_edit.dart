@@ -1,7 +1,6 @@
 import 'package:cooszy_pre/screens/components/cooszy_title.dart';
 import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ToDosEdit extends StatefulWidget {
   const ToDosEdit({super.key});
@@ -42,8 +41,17 @@ class _ToDosEditState extends State<ToDosEdit> {
       }
     }
 
+    // Notification reminder:
+    final List<String> _reminderTimes = [
+      'On time',
+      '5 minutes before...',
+      '1 hour before...',
+      '1 day before...'
+    ];
+    String? _selectedReminderTime;
+
     return SizedBox(
-      height: 450,
+      height: 500,
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -167,6 +175,7 @@ class _ToDosEditState extends State<ToDosEdit> {
                 Row(
                   children: [
                     Expanded(
+                      // Pick a date
                       child: Padding(
                         padding: const EdgeInsets.all(36.0),
                         child: TextField(
@@ -209,6 +218,51 @@ class _ToDosEditState extends State<ToDosEdit> {
                           readOnly: true,
                           onTap: selectDate,
                         ),
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 6.0, bottom: 36.0, left: 18.0),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 12.0),
+                            child: TextButton.icon(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.notifications_on_rounded,
+                              ),
+                              label: const Text('Reminder on'),
+                            ),
+                            //Icon(Icons.notifications_off_outlined),
+                          ),
+                          DropdownButton<String>(
+                            value: _selectedReminderTime ?? _reminderTimes[0],
+                            items: _reminderTimes
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(
+                                  value,
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .inversePrimary),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                _selectedReminderTime = newValue;
+                              });
+                            },
+                          )
+                        ],
                       ),
                     ),
                   ],

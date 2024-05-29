@@ -290,8 +290,22 @@ class _MyPeopleState extends State<MyPeople> {
 
                         // To-Do button
                         Padding(
-                            padding: const EdgeInsets.only(right: 10.0),
-                            child: IconButton(
+                          padding: const EdgeInsets.only(right: 10.0),
+                          child: TextButton.icon(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const ToDos()));
+                            },
+                            icon: const Icon(
+                              CooszyIcons.to_do,
+                            ),
+                            label: const Text(''),
+                          ),
+
+                          /*
+                            IconButton(
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -301,8 +315,11 @@ class _MyPeopleState extends State<MyPeople> {
                                 icon: Icon(
                                   CooszyIcons.to_do,
                                   color: Theme.of(context).colorScheme.primary,
-                                ))),
+                                ))
+                                */
+                        ),
                         // Episode button
+                        /*
                         Padding(
                             padding: const EdgeInsets.only(right: 10.0),
                             child: IconButton(
@@ -311,6 +328,7 @@ class _MyPeopleState extends State<MyPeople> {
                                   Icons.event_note_outlined,
                                   color: Theme.of(context).colorScheme.primary,
                                 ))),
+                        */
                         // See details button
                         Padding(
                           padding: const EdgeInsets.only(right: 10.0),

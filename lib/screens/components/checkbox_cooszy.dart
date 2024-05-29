@@ -60,6 +60,56 @@ class __CheckboxCooszyState extends State<CheckboxCooszy> {
                     color: Theme.of(context).colorScheme.secondary),
               ),
             ),
+            const Spacer(),
+            // Three dots menu
+            PopupMenuButton(
+              icon: Icon(Icons.more_vert,
+                  color: Theme.of(context).colorScheme.onPrimaryContainer),
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 1,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 3.0),
+                        child: Icon(
+                          Icons.edit_outlined,
+                          size: 22,
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                        ),
+                      ),
+                      Text(
+                        "Edit",
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
+                      ),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 2,
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 3.0),
+                        child: Icon(
+                          Icons.delete_outline,
+                          size: 22,
+                          color: Theme.of(context).colorScheme.inversePrimary,
+                        ),
+                      ),
+                      Text(
+                        "Delete",
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
         Row(
@@ -84,15 +134,18 @@ class __CheckboxCooszyState extends State<CheckboxCooszy> {
             ),
             // ToDo Title
             Flexible(
-              child: Text(
-                widget.text,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                    height: 1,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.inversePrimary),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 6.0),
+                child: Text(
+                  widget.text,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      height: 1,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).colorScheme.inversePrimary),
+                ),
               ),
             ),
           ],
