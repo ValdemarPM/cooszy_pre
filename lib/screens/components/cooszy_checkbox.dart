@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CheckboxCooszy extends StatefulWidget {
+class CooszyCheckbox extends StatefulWidget {
   final String text;
   final String? description; // Make the description parameter nullable
   final String date;
   final bool alarm;
 
-  const CheckboxCooszy(
+  const CooszyCheckbox(
       {super.key,
       required this.text,
       this.description, // description is optional
@@ -15,10 +15,10 @@ class CheckboxCooszy extends StatefulWidget {
 
   @override
   // ignore: library_private_types_in_public_api
-  __CheckboxCooszyState createState() => __CheckboxCooszyState();
+  __CooszyCheckboxState createState() => __CooszyCheckboxState();
 }
 
-class __CheckboxCooszyState extends State<CheckboxCooszy> {
+class __CooszyCheckboxState extends State<CooszyCheckbox> {
   bool _isChecked = false;
 
   @override

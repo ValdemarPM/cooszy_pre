@@ -11,4 +11,6 @@ class CooszyIcons {
   static const IconData to_do = IconData(0xe800, fontFamily: _fontFamily);
   // ignore: constant_identifier_names
   static const IconData to_do_add = IconData(0xe801, fontFamily: _fontFamily);
+  // ignore: constant_identifier_names
+  static const IconData activities = IconData(0xe802, fontFamily: _fontFamily);
 }

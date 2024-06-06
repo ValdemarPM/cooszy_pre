@@ -195,7 +195,7 @@ class _MyPeopleState extends State<MyPeople> {
                                         shape: BoxShape.circle,
                                         color: Theme.of(context)
                                             .colorScheme
-                                            .primary),
+                                            .inversePrimary),
                                     child: ClipRRect(
                                       // Image circle
                                       borderRadius: BorderRadius.circular(50.0),

@@ -1,6 +1,6 @@
-import 'package:cooszy_pre/screens/components/checkbox_cooszy.dart';
 import 'package:cooszy_pre/screens/components/cooszy_title.dart';
-import 'package:cooszy_pre/screens/subpages/todos_edit.dart';
+import 'package:cooszy_pre/screens/subelements/todos_edit.dart';
+import 'package:cooszy_pre/screens/subelements/todos_list.dart';
 import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -19,24 +19,7 @@ class _ToDosState extends State<ToDos> {
     wrapNeeded: false,
   );
 
-  final List<CheckboxCooszy> _checkboxItem1 = [
-    const CheckboxCooszy(
-      text: "We have to go and drink some beers 🍻 and have lots fo fun.",
-      description:
-          "But we also have to do some other stuff like we're so fucking crazy and have lots of fun together!",
-      date: "15 May 2024 - 10:00",
-      alarm: true,
-    ),
-  ];
-
-  final List<CheckboxCooszy> _checkboxItem2 = [
-    const CheckboxCooszy(
-      text: "Go to a museum",
-      description: "Do not forget to tell our friends to go out.",
-      date: "20 May 2024 - 18:00",
-      alarm: false,
-    ),
-  ];
+  ToDosList toDosList = const ToDosList();
 
   final toDosEdit = const ToDosEdit();
 
@@ -79,7 +62,10 @@ class _ToDosState extends State<ToDos> {
       body: Stack(
         children: [
           SingleChildScrollView(
-            child: Column(
+            child: toDosList,
+
+            /*
+            Column(
               children: <Widget>[
                 // Card
                 Padding(
@@ -132,6 +118,7 @@ class _ToDosState extends State<ToDos> {
                         80), // Add some space at the bottom for the FloatingActionButton
               ],
             ),
+            */
           ),
           // Action button
           Positioned(

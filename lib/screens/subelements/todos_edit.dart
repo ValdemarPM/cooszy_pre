@@ -42,13 +42,13 @@ class _ToDosEditState extends State<ToDosEdit> {
     }
 
     // Notification reminder:
-    final List<String> _reminderTimes = [
+    final List<String> reminderTimes = [
       'On time',
       '5 minutes before...',
       '1 hour before...',
       '1 day before...'
     ];
-    String? _selectedReminderTime;
+    String? selectedReminderTime;
 
     return SizedBox(
       height: 500,
@@ -241,8 +241,8 @@ class _ToDosEditState extends State<ToDosEdit> {
                             //Icon(Icons.notifications_off_outlined),
                           ),
                           DropdownButton<String>(
-                            value: _selectedReminderTime ?? _reminderTimes[0],
-                            items: _reminderTimes
+                            value: selectedReminderTime ?? reminderTimes[0],
+                            items: reminderTimes
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
@@ -258,7 +258,7 @@ class _ToDosEditState extends State<ToDosEdit> {
                             }).toList(),
                             onChanged: (String? newValue) {
                               setState(() {
-                                _selectedReminderTime = newValue;
+                                selectedReminderTime = newValue;
                               });
                             },
                           )

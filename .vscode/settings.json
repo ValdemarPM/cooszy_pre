@@ -1,0 +1,22 @@
+{
+  "material-icon-theme.folders.customClones": [
+    {
+      "name": "subelements",
+      "base": "layout",
+      "color": "deep-orange-500",
+      "lightColor": "deep-orange-700",
+      "folderNames": [
+        "subelements"
+      ]
+    },
+    {
+      "name": "subpages",
+      "base": "meta",
+      "color": "deep-orange-500",
+      "lightColor": "deep-orange-700",
+      "folderNames": [
+        "subpages"
+      ]
+    },
+  ],
+}

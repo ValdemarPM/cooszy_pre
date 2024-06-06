@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 ThemeData lightMode = ThemeData(
   brightness: Brightness.light,
   fontFamily: "Baloo2",
+  dividerColor: Colors.grey.shade200,
   colorScheme: ColorScheme.light(
     background: Colors.white,
 
