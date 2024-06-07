@@ -17,7 +17,9 @@ ThemeData lightMode = ThemeData(
     // light brown
     onInverseSurface: const Color.fromARGB(100, 51, 12, 2),
     // light orange
-    onPrimaryContainer: const Color.fromARGB(150, 255, 98, 20),
+    onPrimaryContainer: const Color.fromARGB(255, 255, 160, 100),
+    //onPrimaryContainer: const Color.fromARGB(255, 233, 163, 117),
+    //onPrimaryContainer: const Color.fromARGB(150, 255, 98, 20),
     // lighter orange
     onTertiaryContainer: const Color.fromARGB(255, 255, 246, 242),
 

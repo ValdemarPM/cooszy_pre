@@ -7,6 +7,7 @@ import 'package:cooszy_pre/screens/subpages/episodes.dart';
 import 'package:cooszy_pre/themes/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class Me extends StatefulWidget {
@@ -54,16 +55,39 @@ class _MeState extends State<Me> {
       builder: (BuildContext context) {
         return SizedBox(
           height: 600,
-          child: Center(
-            child: CupertinoSwitch(
-              value: isDarkMode, // Use the captured value
-              onChanged: (value) {
-                // Since we're inside the builder, make sure to access provider correctly
-                Provider.of<ThemeProvider>(context, listen: false)
-                    .toggleTheme();
-                Navigator.of(context)
-                    .pop(); // Optionally close the bottom sheet after changing the theme
-              },
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Center(
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const Text("Switch Light/Dark modes "),
+                      CupertinoSwitch(
+                        value: isDarkMode, // Use the captured value
+                        onChanged: (value) {
+                          // Since we're inside the builder, make sure to access provider correctly
+                          Provider.of<ThemeProvider>(context, listen: false)
+                              .toggleTheme();
+                          Navigator.of(context)
+                              .pop(); // Optionally close the bottom sheet after changing the theme
+                        },
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Expanded(
+                        child: TextFormField(
+                          decoration: const InputDecoration(
+                              border: UnderlineInputBorder(),
+                              labelText: "Add something"),
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );
