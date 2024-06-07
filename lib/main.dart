@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/persisten_bottom_nav_bar_demo.dart';
@@ -6,10 +7,10 @@ import 'package:cooszy_pre/themes/theme_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(ChangeNotifierProvider(
-    create: (context) => ThemeProvider(),
-    child: const MyApp(),
-  ));
+  initializeDateFormatting().then((_) => runApp(ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+        child: const MyApp(),
+      )));
 }
 
 class MyApp extends StatefulWidget {
@@ -34,39 +35,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Cooszy',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      home: const PersistenBottomNavBarDemo(),
+      home: const PersistenBottomNavBar(),
     );
   }
 }
 
 Future<void> _precacheAssets(BuildContext context) async {
-  // Skipping SVGs for now.
-  //await AssetsUtils.svgPrecacheImages(context);
   // ignore: use_build_context_synchronously
   await AssetsUtils.imagePrecache(context);
 }
-
-/* ---
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Cooszy',
-      theme: Provider.of<ThemeProvider>(context).themeData,
-      //theme: ThemeData(useMaterial3: true,),
-      home: const PersistenBottomNavBarDemo(),
-    );
-  }
-}
-
-Future<void> _precacheAssets(BuildContext context) async {
-  await AssetsUtils.svgPrecacheImages(context);
-  await AssetsUtils.imagePrecache(context);
-}
-
-
-*/
