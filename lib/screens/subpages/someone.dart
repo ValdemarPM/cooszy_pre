@@ -4,6 +4,7 @@ import 'package:cooszy_pre/screens/components/cooszy_expansion_tile.dart';
 import 'package:cooszy_pre/screens/components/cooszy_someone_header.dart';
 import 'package:cooszy_pre/screens/subelements/activities_and_hobbies.dart';
 import 'package:cooszy_pre/screens/subelements/likes_and_dislikes.dart';
+import 'package:cooszy_pre/screens/subelements/special_events.dart';
 import 'package:cooszy_pre/screens/subelements/todos_list.dart';
 import 'package:cooszy_pre/screens/subpages/episodes.dart';
 import 'package:cooszy_pre/screens/subelements/someone_profile.dart';
@@ -50,6 +51,17 @@ class _SomeoneState extends State<Someone> {
       child: episodes,
     );
 
+    // Special Events Tile
+    SpecialEents specialEvents = const SpecialEents();
+    CooszyExpansionTile specialEventsTile;
+    specialEventsTile = CooszyExpansionTile(
+      titleIcon: CooszyIcons.special_events,
+      //titleIcon: CooszyIcons.activities,
+      titleText: 'Special Events',
+      subtitleText: 'Important date events for Joana',
+      child: specialEvents,
+    );
+
     // Activities & Hobbies Tile
     ActivitiesAndHobbies activitiesAndHobbies = const ActivitiesAndHobbies();
     CooszyExpansionTile activitiesAndHobbiesTile;
@@ -83,7 +95,7 @@ class _SomeoneState extends State<Someone> {
 
     return BaseWidget(
       child: Scaffold(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           appBar: AppBar(
             iconTheme: IconThemeData(
                 color: Theme.of(context).colorScheme.inversePrimary),
@@ -105,28 +117,93 @@ class _SomeoneState extends State<Someone> {
                 header,
                 // Todos Tile
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                  child: toDosTile,
+                  padding: const EdgeInsets.only(
+                      top: 12.0, right: 12.0, bottom: 6.0, left: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: toDosTile,
+                  ),
                 ),
                 // Episodes Tile
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                  child: episodesTile,
+                  padding: const EdgeInsets.only(
+                      top: 6.0, right: 12.0, bottom: 6.0, left: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: episodesTile,
+                  ),
+                ),
+                // Special Events Tile
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 6.0, right: 12.0, bottom: 6.0, left: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: specialEventsTile,
+                  ),
                 ),
                 // Activities and Hobbies Tile
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                  child: activitiesAndHobbiesTile,
+                  padding: const EdgeInsets.only(
+                      top: 6.0, right: 12.0, bottom: 6.0, left: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: activitiesAndHobbiesTile,
+                  ),
                 ),
                 // Likes and Dislikes Tile
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                  child: likesAndDislikesTile,
+                  padding: const EdgeInsets.only(
+                      top: 6.0, right: 12.0, bottom: 6.0, left: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: likesAndDislikesTile,
+                  ),
                 ),
                 // Profile tile
                 Padding(
-                  padding: const EdgeInsets.only(top: 12.0, bottom: 12.0),
-                  child: profileTile,
+                  padding: const EdgeInsets.only(
+                      top: 6.0, right: 12.0, bottom: 6.0, left: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.onTertiaryContainer,
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      ),
+                      borderRadius: const BorderRadius.all(Radius.circular(12)),
+                    ),
+                    child: profileTile,
+                  ),
                 ),
                 const SizedBox(
                   height: 90,
