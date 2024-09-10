@@ -7,7 +7,6 @@ import 'package:cooszy_pre/screens/subpages/episodes.dart';
 import 'package:cooszy_pre/themes/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class Me extends StatefulWidget {
@@ -102,7 +101,7 @@ class _MeState extends State<Me> {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Me"),
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           actions: [
             PopupMenuButton<int>(
               onSelected: (value) {

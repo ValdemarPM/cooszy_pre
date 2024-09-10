@@ -51,7 +51,7 @@ class _ToDosEditState extends State<ToDosEdit> {
     String? selectedReminderTime;
 
     return SizedBox(
-      height: 500,
+      height: 400,
       child: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -106,8 +106,9 @@ class _ToDosEditState extends State<ToDosEdit> {
                           // TextField initial text
                           labelStyle: TextStyle(
                               fontWeight: FontWeight.w500,
-                              color:
-                                  Theme.of(context).colorScheme.inversePrimary),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onInverseSurface),
                           // TextField onFocus text
                           floatingLabelStyle: TextStyle(
                               color: Theme.of(context).colorScheme.secondary),
@@ -125,59 +126,11 @@ class _ToDosEditState extends State<ToDosEdit> {
                   ],
                 ),
                 Row(
-                  children: <Widget>[
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 12.0, left: 38.0),
-                        child: TextFormField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: 2,
-                          decoration: InputDecoration(
-                              enabledBorder: UnderlineInputBorder(
-                                  // TextField initial underline
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onInverseSurface,
-                                      width: 1)),
-                              // TextField underline border
-                              border: UnderlineInputBorder(
-                                  // TextField initial underline
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onInverseSurface,
-                                      width: 1)),
-                              // TextField underline border
-                              focusedBorder: UnderlineInputBorder(
-                                // TextField onFocus underline
-                                borderSide: BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    width: 1),
-                              ),
-                              //labelText: 'Some description...',
-                              hintText:
-                                  'Any additional idea here... (optional)',
-                              hintStyle: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onInverseSurface)),
-                        ),
-                      ),
-                    ),
-                    Icon(
-                      Icons.mic_none_outlined,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    )
-                  ],
-                ),
-                Row(
                   children: [
                     Expanded(
                       // Pick a date
                       child: Padding(
-                        padding: const EdgeInsets.all(36.0),
+                        padding: const EdgeInsets.all(24.0),
                         child: TextField(
                           controller: _dateController,
                           decoration: InputDecoration(
@@ -223,50 +176,51 @@ class _ToDosEditState extends State<ToDosEdit> {
                   ],
                 ),
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 6.0, bottom: 36.0, left: 18.0),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 12.0),
-                            child: TextButton.icon(
-                              onPressed: () {},
-                              icon: const Icon(
-                                Icons.notifications_on_rounded,
-                              ),
-                              label: const Text('Reminder on'),
-                            ),
-                            //Icon(Icons.notifications_off_outlined),
-                          ),
-                          DropdownButton<String>(
-                            value: selectedReminderTime ?? reminderTimes[0],
-                            items: reminderTimes
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .inversePrimary),
+                      padding: const EdgeInsets.only(right: 12.0),
+                      child: TextButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.notifications_on_rounded,
+                        ),
+                        label: const Text(
+                          'Reminder on',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: SizedBox(
+                        width: 300,
+                        child: DropdownButton<String>(
+                          value: selectedReminderTime ?? reminderTimes[0],
+                          items: reminderTimes
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(
+                                value,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary,
                                 ),
-                              );
-                            }).toList(),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                selectedReminderTime = newValue;
-                              });
-                            },
-                          )
-                        ],
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedReminderTime = newValue;
+                            });
+                          },
+                        ),
                       ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           ),

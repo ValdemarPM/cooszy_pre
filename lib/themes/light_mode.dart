@@ -5,7 +5,7 @@ ThemeData lightMode = ThemeData(
   fontFamily: "Baloo2",
   dividerColor: Colors.grey.shade200,
   colorScheme: ColorScheme.light(
-    background: Colors.white,
+    surface: Colors.white,
 
     primary: const Color.fromARGB(255, 255, 98, 20),
     // medium brown
