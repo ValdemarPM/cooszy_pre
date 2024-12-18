@@ -8,6 +8,7 @@ import 'package:cooszy_pre/themes/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cooszy_pre/services/auth_service.dart'; // Add this import
 
 class Me extends StatefulWidget {
   const Me({super.key});
@@ -104,16 +105,85 @@ class _MeState extends State<Me> {
           backgroundColor: Theme.of(context).colorScheme.surface,
           actions: [
             PopupMenuButton<int>(
-              onSelected: (value) {
+              onSelected: (value) async {
+                // Made async to handle logout
                 if (value == 1) {
                   _openSettingsBottomSheet(context);
+                } else if (value == 2) {
+                  // Show confirmation dialog before logout
+                  bool confirm = await showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Logout'),
+                            content:
+                                const Text('Are you sure you want to logout?'),
+                            actions: [
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                                child: const Text('Cancel'),
+                              ),
+                              TextButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(true),
+                                child: Text(
+                                  'Logout',
+                                  style: TextStyle(
+                                    color: Theme.of(context).colorScheme.error,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ) ??
+                      false;
+
+                  if (confirm && mounted) {
+                    try {
+                      final authService = AuthService();
+                      await authService.signOut();
+                      // No need to navigate - main.dart's StreamBuilder will handle it
+                    } catch (e) {
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Error logging out: $e')),
+                        );
+                      }
+                    }
+                  }
                 }
               },
               itemBuilder: (context) => [
                 const PopupMenuItem(
                   value: 1,
-                  child: Text("Settings"),
-                )
+                  child: Row(
+                    children: [
+                      Icon(Icons.settings),
+                      SizedBox(width: 8),
+                      Text("Settings"),
+                    ],
+                  ),
+                ),
+                PopupMenuItem(
+                  value: 2,
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        "Logout",
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
