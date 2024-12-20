@@ -1,3 +1,4 @@
+import 'package:cooszy_pre/models/person.dart';
 import 'package:cooszy_pre/screens/bases/assets_utils.dart';
 import 'package:cooszy_pre/screens/bases/base_widget.dart';
 import 'package:cooszy_pre/screens/components/cooszy_expansion_tile.dart';
@@ -12,7 +13,12 @@ import 'package:cooszy_pre/themes/cooszy_icons.dart';
 import 'package:flutter/material.dart';
 
 class Someone extends StatefulWidget {
-  const Someone({super.key});
+  final Person person;
+
+  const Someone({
+    super.key,
+    required this.person,
+  });
 
   @override
   // ignore: library_private_types_in_public_api

@@ -174,7 +174,7 @@ class _MeState extends State<Me> {
                         Icons.logout,
                         color: Theme.of(context).colorScheme.error,
                       ),
-                      SizedBox(width: 8),
+                      const SizedBox(width: 8),
                       Text(
                         "Logout",
                         style: TextStyle(
